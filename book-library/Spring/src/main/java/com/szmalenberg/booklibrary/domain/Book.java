@@ -1,20 +1,42 @@
 package com.szmalenberg.booklibrary.domain;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.*;
+import java.util.Random;
 
-@Component
+//@Component
+//@Scope("prototype")//zasięg czy moze istniec kilka instancji w kontekscie
+@Entity
+@Table(name ="book")
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    @Column(name="bookTitle")
     private String title;
     private String publisher;
     private int year;
     private String isbn;
 
     public Book(){
-        this.title = "Ogniem i mieczem";
-        this.year = 1972;
-        this.publisher = "Wydawnictwo XYZ";
-        this.isbn = "AZCSDA23";
+//        this.title = "Ogniem i mieczem";
+//        this.year = new Random().nextInt(2000);
+//        this.publisher = "Wydawnictwo XYZ";
+//        this.isbn = "AZCSDA23";
+    }
 
+    public Book(String title, String publisher, int year, String isbn) {
+        this.title = title;
+        this.publisher = publisher;
+        this.year = year;
+        this.isbn = isbn;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {

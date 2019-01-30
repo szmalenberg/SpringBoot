@@ -1,7 +1,6 @@
 package com.szmalenberg.booklibrary.domain;
 
 import javax.persistence.*;
-import java.util.Random;
 
 //@Component
 //@Scope("prototype")//zasięg czy moze istniec kilka instancji w kontekscie
@@ -16,19 +15,22 @@ public class Book {
     private String publisher;
     private int year;
     private String isbn;
+    private String autor;
 
     public Book(){
 //        this.title = "Ogniem i mieczem";
 //        this.year = new Random().nextInt(2000);
 //        this.publisher = "Wydawnictwo XYZ";
 //        this.isbn = "AZCSDA23";
+        this.autor= autor;
     }
 
-    public Book(String title, String publisher, int year, String isbn) {
+    public Book(String title, String publisher, int year, String isbn,String autor) {
         this.title = title;
         this.publisher = publisher;
         this.year = year;
         this.isbn = isbn;
+        this.autor = autor;
     }
 
     public int getId() {
@@ -71,6 +73,12 @@ public class Book {
         this.isbn = isbn;
     }
 
+    public String getAutor() {
+        return autor;
+    }
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
     @Override
     public String toString() {
         return "Book{" +

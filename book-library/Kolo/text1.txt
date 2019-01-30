@@ -1,0 +1,5 @@
+Imie: 
+Nazwisko: 
+Rok urodzenia: 
+PIN: 
+Haslo: 

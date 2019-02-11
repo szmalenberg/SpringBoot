@@ -1,6 +1,7 @@
 package com.szmalenberg.booklibrary;
 
 import com.szmalenberg.booklibrary.Services.BookService;
+import com.szmalenberg.booklibrary.domain.Author;
 import com.szmalenberg.booklibrary.domain.Book;
 import com.szmalenberg.booklibrary.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,10 @@ public class AppStarter implements CommandLineRunner {
     }
 
     public void init() {
-        Book book = new Book("Ogniem i mieczem", "wyda.Krakow", 1992, "283", "Kowalski");
+        Book book = new Book("Ogniem i mieczem", "wyda.Krakow", "555", 156, new Author("Sienkiewicz"));
         bookService.saveBook(book);
-        Book book2 = new Book("Potop", "wyda.Krakow", 1992, "283", "Kowalski");
-        bookService.saveBook(book2);
+
+
+
     }
 }

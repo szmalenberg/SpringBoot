@@ -1,31 +1,47 @@
 package com.szmalenberg.booklibrary.domain;
-
+import org.hibernate.validator.constraints.Range;
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
 
 //@Component
 //@Scope("prototype")//zasięg czy moze istniec kilka instancji w kontekscie
 @Entity
-@Table(name ="book")
+@Table(name = "book")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(name="bookTitle")
-    private String title;
-    private String publisher;
-    private int year;
-    private String isbn;
-    private String autor;
+    @Column(name = "bookTitle")
 
-    public Book(){
-//        this.title = "Ogniem i mieczem";
-//        this.year = new Random().nextInt(2000);
-//        this.publisher = "Wydawnictwo XYZ";
-//        this.isbn = "AZCSDA23";
-        this.autor= autor;
+
+    @Size(min = 2, message = " Pole musi zawierać co namniej 2 litery")
+    @Size(max = 255, message = "Za dużo znaków! Maksymalnie 255.")
+    private String title;
+
+
+    @Size(min = 2, message = " Pole musi zawierać co namniej 2 litery")
+    @Size(max = 255, message = "Za dużo znaków! Maksymalnie 255.")
+    private String publisher;
+
+
+    @Range(max = 2019, message = "Nieprawidłowa data! Wpisałeś datę przyszłą!")
+    @NotNull(message = "Pole nie moze być puste")
+    private Integer year;
+
+
+    @Size(min = 2, message = "Za mało znaków! Pole musi zawierać co namniej 2 litery")
+    @Size(max = 255, message = "Za dużo znaków! Maksymalnie 255.")
+    private String isbn;
+
+    @OneToOne
+    private @Valid Author autor;
+
+    public Book() {
+        this.autor = autor;
     }
 
-    public Book(String title, String publisher, int year, String isbn,String autor) {
+    public Book(String title, String publisher, String isbn, Integer year, Author autor) {
         this.title = title;
         this.publisher = publisher;
         this.year = year;
@@ -49,7 +65,7 @@ public class Book {
         return publisher;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
@@ -65,26 +81,30 @@ public class Book {
         this.publisher = publisher;
     }
 
-    public void setYear(int year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+
+
     }
 
-    public String getAutor() {
+    public Author getAutor() {
         return autor;
     }
-    public void setAutor(String autor) {
+
+    public void setAutor(Author autor) {
         this.autor = autor;
     }
+
     @Override
     public String toString() {
         return "Book{" +
                 "title='" + title + '\'' +
                 ", publisher='" + publisher + '\'' +
-                ", year=" + year +
+                ", year=" + year + '\'' +
                 ", isbn='" + isbn + '\'' +
                 '}';
     }

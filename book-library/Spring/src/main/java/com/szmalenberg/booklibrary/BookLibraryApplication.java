@@ -3,7 +3,7 @@ package com.szmalenberg.booklibrary;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication//anotacja
+@SpringBootApplication//adnotacja
 public class BookLibraryApplication {
 
 	public static void main(String[] args) {

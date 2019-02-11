@@ -25,14 +25,14 @@ public class BookRepository {
     @Transactional
     public void saveBook(Book book) {
         if (book != null) {
-            em.persist(book);
+            em.persist(book);//metoda zapisujaca nowy rekord
         }
     }
 
     @Transactional // w każej motodzie ktora bedzie zapisywać dodajemy tą metodę
     public void updateBook(Book book) {
         if (book != null)
-            em.merge(book);
+            em.merge(book);//metoda scalająca rekord
     }
 
     @Transactional

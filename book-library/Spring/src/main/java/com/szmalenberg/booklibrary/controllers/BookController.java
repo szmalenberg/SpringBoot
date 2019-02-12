@@ -18,6 +18,7 @@ import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.List;
 
+
 @Controller
 public class BookController {
 
@@ -25,14 +26,14 @@ public class BookController {
     BookService bookService;
 
     @RequestMapping(value = "/books", method = RequestMethod.GET)
-    public String getBooks(Model model) {
+    public String getBooks(Model model){
         List<Book> books = bookService.getBooks();
         model.addAttribute("books", books);
         return "books";
     }
 
     @RequestMapping(value = "/books/delete/{id}", method = RequestMethod.GET)
-    public String removeBook(@PathVariable("id") Integer id) {
+    public String removeBook(@PathVariable("id") Integer id){
         bookService.removeBook(id);
         return "redirect:/books";
     }
@@ -41,10 +42,8 @@ public class BookController {
     public String addBook(Model model) {
         Book book = bookService.getNewBook();
         model.addAttribute("book", book);
-
         return "book";
     }
-
     @RequestMapping(value = "/books", method = RequestMethod.POST)
     public String saveBook(@Valid Book book, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -54,7 +53,6 @@ public class BookController {
             return "redirect:/books";
         }
     }
-
     @RequestMapping(value = "/books/edit/{id}", method = RequestMethod.GET)
     public String editBook(@PathVariable("id") Integer id, Model model) {
         Book book = bookService.getBook(id);
@@ -62,9 +60,4 @@ public class BookController {
         return "book";
     }
 
-
 }
-
-
-
-

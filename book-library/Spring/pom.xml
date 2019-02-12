@@ -8,11 +8,11 @@
 		<version>2.1.2.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.szmalenberg</groupId>
+	<groupId>com.blackbeast</groupId>
 	<artifactId>book-library</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Biblioteka</name>
-	<description>system zarządzania biblioteką w Springu </description>
+	<description>System zarządzania biblioteką w Springu</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -41,10 +41,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
@@ -62,13 +58,10 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>6.0.12.Final</version>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
 		</dependency>
-
 	</dependencies>
-
 
 	<build>
 		<plugins>

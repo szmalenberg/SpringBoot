@@ -10,102 +10,102 @@ import javax.validation.constraints.*;
 @Table(name = "book")
 public class Book {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    @Column(name = "bookTitle")
+      @GeneratedValue(strategy = GenerationType.AUTO)
+      private int id;
+      @Column(name = "bookTitle")
 
+    @NotNull
+     @Size(min=2, message = "Tytuł musi posiadać co najmniej 2 litery")
+      private String title;
 
-    @Size(min = 2, message = " Pole musi zawierać co namniej 2 litery")
-    @Size(max = 255, message = "Za dużo znaków! Maksymalnie 255.")
-    private String title;
+    @NotNull(message ="Rok wydania musi być z przedziału 1-9999" )
+    @Range(max = 2019, message = "Rok wydania musi być z przedziału 1-2019")
+      private Integer year;
 
+      @NotNull(message ="Należy podać wydawcę!")
+    @Size(min =2, message ="Nazwa wydawcy musi zawierać co najnmiej 2 litery" )
+    @Size(max =80, message ="Nazwa wydawcy musi zawierać co najwyżej 80 liter" )
 
-    @Size(min = 2, message = " Pole musi zawierać co namniej 2 litery")
-    @Size(max = 255, message = "Za dużo znaków! Maksymalnie 255.")
-    private String publisher;
+      private String publisher;
 
-
-    @Range(max = 2019, message = "Nieprawidłowa data! Wpisałeś datę przyszłą!")
-    @NotNull(message = "Pole nie moze być puste")
-    private Integer year;
-
-
-    @Size(min = 2, message = "Za mało znaków! Pole musi zawierać co namniej 2 litery")
-    @Size(max = 255, message = "Za dużo znaków! Maksymalnie 255.")
+    @Size(max =80, message ="Numer ISBN może zawierać co najwyżej 80 znaków" )
     private String isbn;
 
-    @OneToOne
-    private @Valid Author autor;
+      @OneToOne
+      private @Valid Author author;
 
-    public Book() {
-        this.autor = autor;
-    }
+      public Book(){
 
-    public Book(String title, String publisher, String isbn, Integer year, Author autor) {
+
+      }
+
+      public Book(String title, Integer year, String publisher, String isbn, Author author) {
         this.title = title;
-        this.publisher = publisher;
-        this.year = year;
-        this.isbn = isbn;
-        this.autor = autor;
-    }
+          this.year = year;
+          this.publisher = publisher;
+          this.isbn = isbn;
+          this.author = author;
+      }
 
-    public int getId() {
+      public int getId() {
         return id;
-    }
+      }
 
-    public void setId(int id) {
+      public void setId(int id) {
         this.id = id;
-    }
+      }
 
-    public String getTitle() {
+      public String getTitle() {
         return title;
-    }
+      }
 
-    public String getPublisher() {
-        return publisher;
-    }
-
-    public Integer getYear() {
-        return year;
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setTitle(String title) {
+      public void setTitle(String title) {
         this.title = title;
-    }
+      }
 
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
-    }
+      public Integer getYear() {
+        return year;
+      }
 
-    public void setYear(Integer year) {
+      public void setYear(Integer year) {
         this.year = year;
-    }
+      }
 
-    public void setIsbn(String isbn) {
+      public String getPublisher() {
+        return publisher;
+      }
+
+      public void setPublisher(String publisher) {
+        this.publisher = publisher;
+      }
+
+      public String getIsbn() {
+        return isbn;
+      }
+
+      public void setIsbn(String isbn) {
         this.isbn = isbn;
+      }
 
+    public Author getAuthor() {
+        return author;
+      }
 
-    }
+      public void setAuthor(Author author) {
+          this.author = author;
+      }
 
-    public Author getAutor() {
-        return autor;
-    }
-
-    public void setAutor(Author autor) {
-        this.autor = autor;
-    }
-
-    @Override
-    public String toString() {
-        return "Book{" +
+      @Override
+      public String toString() {
+          return "Book{" +
                 "title='" + title + '\'' +
-                ", publisher='" + publisher + '\'' +
-                ", year=" + year + '\'' +
-                ", isbn='" + isbn + '\'' +
-                '}';
-    }
-}
+                  ", year=" + year +
+                  ", publisher='" + publisher + '\'' +
+                  ", isbn='" + isbn + '\'' +
+                  '}';
+      }
+  }
+
+
+
+

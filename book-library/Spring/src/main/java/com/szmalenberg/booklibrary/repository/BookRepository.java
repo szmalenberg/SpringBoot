@@ -14,30 +14,32 @@ public class BookRepository {
     @PersistenceContext
     private EntityManager em;
 
-    public Collection<Book> getBooks() {
+    public Collection<Book> getBooks(){
         return em.createQuery("from Book", Book.class).getResultList();
     }
 
-    public Book getBook(int id) {
+    public Book getBook(int id){
         return em.find(Book.class, id);
     }
 
     @Transactional
-    public void saveBook(Book book) {
-        if (book != null) {
-            em.persist(book);//metoda zapisujaca nowy rekord
-        }
+    public void saveBook(Book book){
+        if(book != null)
+            em.persist(book);
     }
 
-    @Transactional // w każej motodzie ktora bedzie zapisywać dodajemy tą metodę
-    public void updateBook(Book book) {
-        if (book != null)
-            em.merge(book);//metoda scalająca rekord
+    @Transactional
+    public void updateBook(Book book){
+        if(book != null)
+            em.merge(book);
     }
 
     @Transactional
     public void removeBook(Book book) {
-        if (book != null)
+        if(book != null)
             em.remove(book);
     }
+    public Collection<Book> getBooksByAuthor(String authorName){
+        return em.createQuery("SELECT DISTINCT b from Book b INNER JOIN b.author a WHERE a.name =:authorName", Book.class).setParameter("authorName",authorName).getResultList();
 }
+    }

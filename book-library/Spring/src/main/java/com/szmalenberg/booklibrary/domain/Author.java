@@ -10,20 +10,16 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
-
-    @Size(min =2, message = "Za mało znaków! Pole musi zawierać co najmniej 2 litery!")
     private String name;
 
     public Author(String name) {
         this.name = name;
     }
-    public Author (){
+    public Author(){
 
     }
 
@@ -31,12 +27,12 @@ public class Author {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {

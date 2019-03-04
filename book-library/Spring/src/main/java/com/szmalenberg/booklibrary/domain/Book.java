@@ -35,10 +35,7 @@ public class Book {
       private @Valid Author author;
 
       public Book(){
-
-
-      }
-
+     }
       public Book(String title, Integer year, String publisher, String isbn, Author author) {
         this.title = title;
           this.year = year;
@@ -46,7 +43,6 @@ public class Book {
           this.isbn = isbn;
           this.author = author;
       }
-
       public int getId() {
         return id;
       }

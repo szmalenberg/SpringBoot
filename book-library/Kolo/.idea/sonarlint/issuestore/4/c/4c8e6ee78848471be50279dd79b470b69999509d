@@ -1,3 +1,5 @@
 
-Lsquid:S1481	"/Remove this unused "nazwaPliku" local variable.(ÿ€âO8âãôÍ‡-
 rsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Şí 
+V
+squid:S106"9Replace this use of System.out or System.err by a logger.(Ë÷è8ƒÏŞÛ-
+Nsquid:S1153"1Directly append the argument of String.valueOf().(È†ø}8ƒÏŞÛ-

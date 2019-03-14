@@ -13,7 +13,7 @@
 
 <div class="container = ">
     <table class="table">
-        <thead class ="thead-dark">
+        <thead class="thead-dark">
         <th>Tytuł książki</th>
         <th>Rok wydania</th>
         <th>Wydawca</th>
@@ -25,9 +25,9 @@
         <tbody th:each="element : ${books}">
         <tr>
             <td th:text=${element.title}></td>
-              <td th:text=${element.year}></td>
+            <td th:text=${element.year}></td>
             <td th:text=${element.publisher}></td>
-              <td th:text=${element.isbn}></td>
+            <td th:text=${element.isbn}></td>
             <td th:text=${element.author.name}></td>
             <td><a th:href="${'/books/edit/'+ element.id}">Edytuj</a></td>
             <td><a th:href="${'/books/delete/'+ element.id}">Usuń</a></td>
@@ -36,7 +36,19 @@
 
         </tbody>
     </table>
-    <a th:href="${'/books/add'}">Dodaj książkę</a>
+    <div>
+        <a th:href="${'/books/add'}">Dodaj książkę</a>
+    </div>
+    <div class="row">
+        <form action="#" th:action="@{/logout}" method="post">
+            <button type="submit" class="btn btn-primary float-right">Wyloguj</button>
+        </form>
+    </div>
+
 </div>
+
+    </div>
+
+
 </body>
 </html>

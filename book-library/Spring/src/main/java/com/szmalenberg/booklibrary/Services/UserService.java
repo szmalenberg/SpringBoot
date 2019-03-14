@@ -4,6 +4,8 @@ import com.szmalenberg.booklibrary.domain.Role;
 import com.szmalenberg.booklibrary.domain.User;
 import com.szmalenberg.booklibrary.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -16,14 +18,12 @@ public class UserService {
 @Transactional
     public void createUser(String username, String password) {
         if (username != null && password != null) {
-            User user = userRepository.getUser(username);
+            PasswordEncoder pe = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
-            if (user == null) {
-                User newUser = new User(username, password);
-                userRepository.addUser(newUser);
+                User user = new User(username, pe.encode(password));
+                userRepository.addUser(user);
             }
-        }
-    }
+}
     @Transactional
     public void addRoleToUser(String username, String rolename) {
         if (username != null && rolename != null) {
